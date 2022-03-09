@@ -1,0 +1,115 @@
+<html>
+
+<head>
+
+    <title> RSA implementation </title>
+
+</head>
+
+<body>
+
+    <center>
+
+        <h1> RSA IMPLEMENTATION </h1>
+
+        <table>
+
+            <tr>
+
+                <td> Value of P </td>
+
+                <td><input type="number" value="53" id="p"></td>
+
+            </tr>
+
+            <tr>
+
+                <td> Value of q </td>
+
+                <td><input type="number" value="59" id="q"></td>
+
+            </tr>
+
+            <tr>
+
+                <td> Value of e </td>
+
+                <td><input type="number" value="3" id="e"></td>
+
+            </tr>
+
+            <tr>
+
+                <td> Value of M </td>
+
+                <td><input type="number" value="8" id="m"></td>
+
+            </tr>
+
+            <tr>
+
+                <td> Value of Public Key </td>
+
+                <td>
+                    <p id="n"> </p>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td> Value of private Key </td>
+
+                <td>
+                    <p id="d"></p>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td> Encryption Value </td>
+
+                <td>
+                    <p id="encrval"> </p>
+                </td>
+
+            </tr>
+
+            <td> Decrypted Value </td>
+
+            <td>
+                <p id="decval"> </p>
+            </td>
+
+            </tr>
+            <tr>
+                <td><button onclick="RSA();">Apply RSA</button></td>
+            </tr>
+    </center>
+
+</body>
+<script type="text/javascript">
+    function RSA() {
+        var n, pi, d, pt, ct, e, m;
+        p = document.getElementById('p').value;
+        q = document.getElementById('q').value;
+
+        e = document.getElementById('e').value;
+        m = document.getElementById('m').value;
+        console.log(e);
+        
+        n = p * q;
+        pi = (p - 1) * (q - 1);
+        d = (pi + 1) / e;
+        ct = Math.pow(m, e) % n;
+        pt = Math.pow(ct, d) % n;
+        console.log(pt);
+        document.getElementById('n').innerHTML = n;
+        document.getElementById('d').innerHTML = d;
+        document.getElementById('encrval').innerHTML = ct;
+        document.getElementById('decval').innerHTML = pt;
+    }
+</script>
+
+</html>
